@@ -35,7 +35,6 @@ Given('a variable set to {int}', function (number) {
 
 When('I increment the variable by {int}', function (number) {
   this.incrementBy(number);
-  this.attachment('fike', 'sss', 'application/json')
 });
 
 Then('the variable should contain {int}', function (number) {
