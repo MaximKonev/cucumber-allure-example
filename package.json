@@ -2,7 +2,7 @@
   "name": "cucumber-allure-example",
   "version": "1.0.0",
   "scripts": {
-    "cucumber": "./node_modules/.bin/cucumber-js src/features --format src/features/support/Reporter.js"
+    "cucumber": "./node_modules/.bin/cucumber-js src/features --format src/features/support/Reporter.js --parallel 1"
   },
   "dependencies": {
     "allure-commandline": "^2.13.8",

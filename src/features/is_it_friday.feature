@@ -8,6 +8,18 @@ Feature: Simple maths
     Then the variable should contain <result>
 
     Examples:
+      | var1  | increment | result |
+      | 1000  | 5         | 1005   |
+      | 99999 | 1         | 100000 |
+      | 13    | 5         | 18     |
+
+  Scenario Outline: much more complex stuff (<var1>, <increment>)
+    Given a variable set to <var1>
+    When I good in this
+    When I increment the variable by <increment>
+    Then the variable should contain <result>
+
+    Examples:
       | var1 | increment | result |
       | 100 |         5 |    105 |
       |  99 |      1234 |   1333 |
