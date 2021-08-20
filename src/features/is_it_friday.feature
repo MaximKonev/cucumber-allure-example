@@ -3,7 +3,7 @@ Feature: Simple maths
 
   Scenario Outline: much more complex stuff (<var1>, <increment>)
     Given a variable set to <var1>
-    And I good in this
+    When I good in this
     When I increment the variable by <increment>
     Then the variable should contain <result>
 

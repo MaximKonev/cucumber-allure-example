@@ -1,5 +1,4 @@
-// Cucumber and chai have been loaded in the browser
-const { setWorldConstructor } = require('cucumber');
+const { setWorldConstructor } = require('cucumber')
 const { Given } = require('cucumber');
 const { When } = require('cucumber');
 const { Then } = require('cucumber');
@@ -9,20 +8,24 @@ const { expect } = require('chai');
 //
 // Call 'setWorldConstructor' with to your custom world (optional)
 //
+class CustomWorld {
+  constructor({attach, parameters, log}) {
+    // needed so `attach`, `log` and `parameters` are properly set
+    this.variable = 0;
+    this.attach =attach;
+    this.parameters = parameters;
+    this.log = log;
+  }
 
-const CustomWorld = function () {
-  this.variable = 0;
+  incrementBy(number) {
+    this.variable += number;
 };
+  setTo(number) {
+    this.variable = number;
+  };
+}
 
-CustomWorld.prototype.setTo = function (number) {
-  this.variable = parseInt(number, 10);
-};
-
-CustomWorld.prototype.incrementBy = function (number) {
-  this.variable += parseInt(number, 10);
-};
-
-setWorldConstructor(CustomWorld);
+setWorldConstructor(CustomWorld)
 
 /// // Step definitions /////
 //
@@ -35,6 +38,7 @@ Given('a variable set to {int}', function (number) {
 
 When('I increment the variable by {int}', function (number) {
   this.incrementBy(number);
+  this.attach('{"some", "JSON"}}', 'application/json')
 });
 
 Then('the variable should contain {int}', function (number) {
